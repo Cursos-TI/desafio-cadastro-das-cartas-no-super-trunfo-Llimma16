@@ -3,7 +3,7 @@
 int main() {
     
     char cartaA[4];
-    char estadoA[4];
+    char estadoA;
     char codigoCartaA[10];
     char cidadeA[30];
     int populacaoA;
@@ -12,7 +12,7 @@ int main() {
     float PIBA;
 
     char cartaB[4];
-    char estadoB[4];
+    char estadoB;
     char codigoCartaB[10];
     char cidadeB[30];
     int populacaoB;
@@ -25,7 +25,7 @@ int main() {
     printf("\nCarta A: \n");
 
     printf("Qual codígo da carta? \n");
-    scanf(" %s", codigoCartaA);
+    scanf(" %9s", codigoCartaA);
 
     printf("Qual é o seu estado (uma letra de 'A' a 'H')? \n");
     scanf(" %c", &estadoA);
@@ -50,7 +50,7 @@ int main() {
     scanf(" %s", codigoCartaB);
 
     printf("Qual é o seu estado (uma letra de 'A' a 'H')? \n ");
-    scanf(" %c", estadoB);
+    scanf(" %c", &estadoB);
 
     printf("Qual a cidade? \n");
     scanf(" %[^\n]", cidadeB);
@@ -79,7 +79,7 @@ int main() {
     printf("PIB: %.2f bilhões \n",PIBA);
     printf("Números de Pontos Turísticos: %d \n",numpontosturistcsA);
 
-    printf("\n--- CATA B ---\n");
+    printf("\n--- CARTA B ---\n");
     printf("\nCarta B: %s \n",cartaB);
     printf("Código: %s \n", codigoCartaB);
     printf("Estado: %c \n",estadoB);
