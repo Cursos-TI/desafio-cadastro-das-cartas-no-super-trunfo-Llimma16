@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int main() {
+    
     char cartaA[4];
     char estadoA[4];
     char codigoCartaA[10];
@@ -19,8 +21,6 @@
     int numpontosturistcsB;
     float areaB;
     float PIBB;
-
-int main() {
 
     printf("Desafio Super Triunfo \n");
 
