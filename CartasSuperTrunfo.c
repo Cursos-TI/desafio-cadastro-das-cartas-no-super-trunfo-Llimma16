@@ -1,8 +1,7 @@
 #include <stdio.h>
-Projeto
 
     char cartaA[4];
-    char estadoA[60];
+    char estadoA[4];
     char codigoCartaA[10];
     char cidadeA[60];
     int codigoCA;
@@ -12,7 +11,7 @@ Projeto
     float PIBA;
 
     char cartaB[4];
-    char estadoB[60];
+    char estadoB[4];
     char codigoCartaB[10];
     char cidadeB[60];
     int codigoCB;
@@ -28,7 +27,6 @@ int main() {
     // -------------------- CARTA A --------------------
 
     printf("\nCarta A: \n");
-    scanf(" %s", cartaA);
 
     printf("Qual codígo da carta? \n");
     scanf(" %s", codigoCartaA);
@@ -53,8 +51,6 @@ int main() {
 
 // -------------------- CARTA B --------------------
     printf("\nCarta B: \n");
-
-    scanf(" %s", cartaB);
 
     printf("Qual codígo da carta? \n");
     scanf(" %s", codigoCartaB);
