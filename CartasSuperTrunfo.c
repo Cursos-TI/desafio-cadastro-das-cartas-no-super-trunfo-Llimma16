@@ -6,7 +6,6 @@ int main() {
     char estadoA[4];
     char codigoCartaA[10];
     char cidadeA[60];
-    int codigoCA;
     int populacaoA;
     int numpontosturistcsA;
     float areaA;
@@ -16,7 +15,6 @@ int main() {
     char estadoB[4];
     char codigoCartaB[10];
     char cidadeB[60];
-    int codigoCB;
     int populacaoB;
     int numpontosturistcsB;
     float areaB;
@@ -24,15 +22,13 @@ int main() {
 
     printf("Desafio Super Triunfo \n");
 
-    // -------------------- CARTA A --------------------
-
     printf("\nCarta A: \n");
 
     printf("Qual codígo da carta? \n");
     scanf(" %s", codigoCartaA);
 
-    printf("Qual o estado? \n");
-    scanf(" %[^\n]" , estadoA);
+    printf("Qual é o seu estado (uma letra de "'A' a 'H')? \n");
+    scanf(" %c", &estadoA);
 
     printf("Qual a cidade? \n");
     scanf(" %[^\n]", cidadeA);
@@ -49,7 +45,6 @@ int main() {
      printf("Quantos Pontos Turísticos? \n");
     scanf("%d", &numpontosturistcsA);
 
-// -------------------- CARTA B --------------------
     printf("\nCarta B: \n");
 
     printf("Qual codígo da carta? \n");
@@ -72,8 +67,6 @@ int main() {
 
      printf("Quantos Pontos Turísticos? \n");
     scanf("%d", &numpontosturistcsB);
-
-     // -------------------- IMPRESSÃO --------------------
 
     printf("\n=========== RESULTADO ===========\n");
 
