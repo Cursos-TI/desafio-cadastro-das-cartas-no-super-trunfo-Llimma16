@@ -27,11 +27,11 @@ int main() {
     printf("Qual codígo da carta? \n");
     scanf(" %s", codigoCartaA);
 
-    printf("Qual é o seu estado (uma letra de "'A' a 'H')? \n");
+    printf("Qual é o seu estado (uma letra de 'A' a 'H')? \n");
     scanf(" %c", &estadoA);
 
     printf("Qual a cidade? \n");
-    scanf(" %[^\n]", cidadeA);
+    scanf(" %c", cidadeA);
 
     printf("Quanto de população? \n");
     scanf("%d", &populacaoA);
@@ -45,13 +45,13 @@ int main() {
      printf("Quantos Pontos Turísticos? \n");
     scanf("%d", &numpontosturistcsA);
 
-    printf("\nCarta B: \n");
+    printf(" \nCarta B: \n");
 
     printf("Qual codígo da carta? \n");
     scanf(" %s", codigoCartaB);
 
-    printf("Qual o estado? \n");
-    scanf(" %[^\n]", estadoB);
+    printf("Qual é o seu estado (uma letra de 'A' a 'H')? \n ");
+    scanf(" %c", estadoB);
 
     printf("Qual a cidade? \n");
     scanf(" %[^\n]", cidadeB);
