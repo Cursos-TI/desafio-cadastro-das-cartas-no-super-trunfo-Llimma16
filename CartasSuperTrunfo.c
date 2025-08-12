@@ -7,7 +7,7 @@ int main() {
     char CidadeA[30];
     char CodCartaA[5];
     unsigned long int PopulacaoA;
-    int NumPontosTuristicosA;
+    int NumPontosTuristicosA;  // Corrigido nome da variável
     float AreaA;
     float PIBA;
     float DensidadePopulacionalA;
@@ -19,7 +19,7 @@ int main() {
     char CidadeB[30];
     char CodCartaB[5];
     unsigned long int PopulacaoB;
-    int NumPontosTuristicosB;
+    int NumPontosTuristicosB;  // Corrigido nome da variável
     float AreaB;
     float PIBB;
     float DensidadePopulacionalB;
@@ -70,37 +70,42 @@ int main() {
     printf("Quantos pontos turísticos?\n");
     scanf("%d", &NumPontosTuristicosB);
 
-    printf("\n===== CALCULOS =====\n");
+    // ===== CALCULOS SEGUROS =====
 
     // Cálculo seguro da densidade populacional
-    if (AreaA != 0)
+    if (AreaA != 0) {
         DensidadePopulacionalA = (float)PopulacaoA / AreaA;
-    else
-        DensidadePopulacionalA = 0.0F;
+    } else {
+        DensidadePopulacionalA = 0.0F; // Evita divisão por zero
+    }
 
-    if (AreaB != 0)
+    if (AreaB != 0) {
         DensidadePopulacionalB = (float)PopulacaoB / AreaB;
-    else
-        DensidadePopulacionalB = 0.0F;
+    } else {
+        DensidadePopulacionalB = 0.0F; // Evita divisão por zero
+    }
 
     // Cálculo seguro do PIB per capita
-    if (PopulacaoA != 0)
+    if (PopulacaoA != 0) {
         PIBperCapitaA = (PIBA * 1e9) / PopulacaoA;
-    else
-        PIBperCapitaA = 0.0F;
+    } else {
+        PIBperCapitaA = 0.0F; // Evita divisão por zero
+    }
 
-    if (PopulacaoB != 0)
+    if (PopulacaoB != 0) {
         PIBperCapitaB = (PIBB * 1e9) / PopulacaoB;
-    else
-        PIBperCapitaB = 0.0F;
+    } else {
+        PIBperCapitaB = 0.0F; // Evita divisão por zero
+    }
 
-    // Cálculo do Super Poder usando valores seguros
+    // Cálculo do Super Poder usando os valores seguros e validados acima
     float inversoDensidadeA = (DensidadePopulacionalA != 0) ? (1.0F / DensidadePopulacionalA) : 0.0F;
     float inversoDensidadeB = (DensidadePopulacionalB != 0) ? (1.0F / DensidadePopulacionalB) : 0.0F;
 
     SuperPoderA = (float)PopulacaoA + AreaA + PIBA + (float)NumPontosTuristicosA + PIBperCapitaA + inversoDensidadeA;
     SuperPoderB = (float)PopulacaoB + AreaB + PIBB + (float)NumPontosTuristicosB + PIBperCapitaB + inversoDensidadeB;
 
+    // Exibição dos resultados
     printf("\n===== Resultado =====\n");
 
     printf("\n--CARTA A--\n");
@@ -127,7 +132,7 @@ int main() {
     printf("PIB per Capita: %.2f reais\n", PIBperCapitaB);
     printf("Super Poder: %.2f\n", SuperPoderB);
 
-    // Comparações: 1 se Carta A vence, 0 se Carta B vence ou empate
+    // Comparações (1: Carta A vence; 0: Carta B vence/Empate)
     printf("\n===== COMPARAÇÕES (1: Carta A vence; 0: Carta B vence/Empate) =====\n");
     printf("População: %d\n", (PopulacaoA > PopulacaoB) ? 1 : 0);
     printf("Área: %d\n", (AreaA > AreaB) ? 1 : 0);
