@@ -1,152 +1,109 @@
 #include <stdio.h>
 
 int main() {
-    // Carta A
-    char estadoA;
-    char codigoCartaA[10];
-    char cidadeA[30];
-    unsigned long int populacaoA;
-    int numpontosturistcsA;
-    float areaA;
+
+    // CARTA A 
+    char EstadoA;
+    char CidadeA[30];
+    char CodCartaA[5];
+    unsigned long int PopulacaoA;
+    int NumPontosTuritcsA;
+    float AreaA;
     float PIBA;
+    float DensidadePopulacionalA;
+    float PIBperCapitaA;
 
-    // Carta B
-    char estadoB;
-    char codigoCartaB[10];
-    char cidadeB[30];
-    unsigned long int populacaoB;
-    int numpontosturistcsB;
-    float areaB;
+    // CARTA B 
+    char EstadoB;
+    char CidadeB[30];
+    char CodCartaB[5];
+    unsigned long int PopulacaoB;
+    int NumPontosTuritcsB;
+    float AreaB;
     float PIBB;
+    float DensidadePopulacionalB;
+    float  PIBperCapitaB;
+     
 
-    printf("Desafio Super Trunfo\n");
+    printf("-------CARTA A------\n");
+    printf("Qual o código da sua carta?\n");
+    scanf("%4s", CodCartaA);
 
-    // Entrada Carta A
-    printf("\nCarta A:\n");
+    printf("Qual o seu estado (entre A e H)?\n");
+    scanf(" %c", &EstadoA);  // espaço antes do %c para ignorar \n
 
-    printf("Qual é o seu estado (uma letra de 'A' a 'H')?\n");
-    scanf(" %c", &estadoA);
+    printf("Qual é o nome da sua cidade?\n");
+    scanf(" %29[^\n]", CidadeA);
 
-    printf("Qual o código da carta?\n");
-    scanf(" %9s", codigoCartaA);
+    printf("Qual a população?\n");
+    scanf("%lu", &PopulacaoA);
 
-    printf("Qual a cidade?\n");
-    scanf(" %29[^\n]", cidadeA);
+    printf("Qual a área?\n");
+    scanf("%f", &AreaA);
 
-    printf("Quanto de população?\n");
-    scanf("%lu", &populacaoA);
-
-    printf("Quanto de área (km²)?\n");
-    scanf("%f", &areaA);
-
-    printf("Qual o PIB (em bilhões de reais)?\n");
+    printf("Qual o PIB?\n");
     scanf("%f", &PIBA);
 
-    printf("Quantos Pontos Turísticos?\n");
-    scanf("%d", &numpontosturistcsA);
+    printf("Quantos pontos turísticos?\n");
+    scanf("%d", &NumPontosTuritcsA);
 
-    // Entrada Carta B
-    printf("\nCarta B:\n");
+    printf("\n-------CARTA B------\n");
+    printf("Qual o código da sua carta?\n");
+    scanf("%4s", CodCartaB);
 
-    printf("Qual é o seu estado (uma letra de 'A' a 'H')?\n");
-    scanf(" %c", &estadoB);
+    printf("Qual o seu estado (entre A e H)?\n");
+    scanf(" %c", &EstadoB);
 
-    printf("Qual o código da carta?\n");
-    scanf(" %9s", codigoCartaB);
+    printf("Qual é o nome da sua cidade?\n");
+    scanf(" %29[^\n]", CidadeB);
 
-    printf("Qual a cidade?\n");
-    scanf(" %29[^\n]", cidadeB);
+    printf("Qual a população?\n");
+    scanf("%lu", &PopulacaoB);
 
-    printf("Quanto de população?\n");
-    scanf("%lu", &populacaoB);
+    printf("Qual a área?\n");
+    scanf("%f", &AreaB);
 
-    printf("Qual a área (km²)?\n");
-    scanf("%f", &areaB);
-
-    printf("Qual o PIB (em bilhões de reais)?\n");
+    printf("Qual o PIB?\n");
     scanf("%f", &PIBB);
 
-    printf("Quantos Pontos Turísticos?\n");
-    scanf("%d", &numpontosturistcsB);
+    printf("Quantos pontos turísticos?\n");
+    scanf("%d", &NumPontosTuritcsB);
 
-    // Saída
-    printf("\n=========== RESULTADO ===========\n");
+    ("\n===== CALCULOS =====\n");
 
-    printf("\n--- CARTA A ---\n");
-    printf("Código: %s\n", codigoCartaA);
-    printf("Estado: %c\n", estadoA);
-    printf("Cidade: %s\n", cidadeA);
-    printf("População: %lu\n", populacaoA);
-    printf("ÁREA: %.2f KM²\n", areaA);
-    printf("PIB: %.2f bilhões\n", PIBA);
-    printf("Números de Pontos Turísticos: %d\n", numpontosturistcsA);
+    //Dendidade populacional:habitantes por KM² 
 
-    printf("\n--- CARTA B ---\n");
-    printf("Código: %s\n", codigoCartaB);
-    printf("Estado: %c\n", estadoB);
-    printf("Cidade: %s\n", cidadeB);
-    printf("População: %lu\n", populacaoB);
-    printf("ÁREA: %.2f KM²\n", areaB);
-    printf("PIB: %.2f bilhões\n", PIBB);
-    printf("Números de Pontos Turísticos: %d\n", numpontosturistcsB);
+    DensidadePopulacionalA = (PopulacaoA / AreaA);
+    DensidadePopulacionalB = (PopulacaoB / AreaB);
 
-      printf("\n=========== Comparação ===========\n");
+    //PIB per capita:PIB (bilhões * 1e9) / população
 
-if (codigoCartaA > codigoCartaB) {
-    printf("Carta A tem o maior código (%s > %s)\n", codigoCartaA, codigoCartaB);
-} else if (codigoCartaA < codigoCartaB) {
-    printf("Carta B tem o maior código (%s > %s)\n", codigoCartaB, codigoCartaA);
-} else {
-    printf("Os códigos são iguais (%s = %s)\n", codigoCartaA, codigoCartaB);
-}
+    PIBperCapitaA = (PIBA* 1e9) / PopulacaoA;
+    PIBperCapitaB = (PIBB* 1e9) / PopulacaoB;
 
-if (estadoA > estadoB) {
-    printf("Carta A tem um estado maior: (%c > %c)\n", estadoA, estadoB);
-} else if (estadoA < estadoB) {
-    printf("Carta B tem um estado maior: (%c > %c)\n", estadoB, estadoA);
-} else {
-    printf("Os estados têm valores que são iguais. (%c = %c)\n", estadoA, estadoB);
-}
+    printf("\n===== Resultado =====\n");
 
-if (cidadeA > cidadeB) {
-    printf("Carta A tem o maior cidade: (%s > %s)\n", cidadeA, cidadeB);
-} else if (cidadeA < cidadeB) {
-    printf("Carta B tem o maior cidade: (%s > %s)\n", cidadeB, cidadeA);
-} else {
-    printf("As cidades têm mesmo valor:  (%s = %s)\n", cidadeA, cidadeB);
-}
+    printf("\n--CARTA A--\n");
+    printf("Código: %s\n", CodCartaA);
+    printf("Estado: %c\n", EstadoA);
+    printf("Cidade: %s\n", CidadeA);
+    printf("População: %lu\n", PopulacaoA);
+    printf("Área: %.2f km²\n", AreaA);
+    printf("PIB: %.2f bilhões de reais\n", PIBA);
+    printf("Pontos turísticos: %d\n", NumPontosTuritcsA);
+    printf("Densidade Populacional: %5.2f hab/km²\n", DensidadePopulacionalA);
+    printf("PIB per Capita: %5.2f reais\n", PIBperCapitaA);
 
-if (populacaoA > populacaoB) {
-    printf("Carta A tem a maior população: (%lu > %lu)\n", populacaoA, populacaoB);
-} else if (populacaoA < populacaoB) {
-    printf("Carta B tem a maior população: (%lu > %lu)\n", populacaoB, populacaoA);
-} else {
-    printf("A população tem valores iguais. (%lu = %lu)\n", populacaoA, populacaoB);
-}
-
-if (areaA > areaB) {
-    printf("Carta A tem a maior área: (%.2f > %.2f)\n", areaA, areaB);
-} else if (areaA < areaB) {
-    printf("Carta B tem o maior área: (%.2f > %.2f)\n", areaB, areaA);
-} else {
-    printf("As áreas têm valores iguais. (%.2f = %.2f)\n", areaA, areaB);
-}
-
-if (PIBA > PIBB) {
-    printf("Carta A tem o maior PIB: (%.2f > %.2f)\n", PIBA, PIBB);
-} else if (PIBA < PIBB) {
-    printf("Carta B tem o maior PIB: (%.2f > %.2f)\n", PIBB, PIBA);
-} else {
-    printf("Os valores de PIBs são iguais. (%.2f = %.2f)\n", PIBA, PIBB);
-}
-
-if (numpontosturistcsA > numpontosturistcsB) {
-    printf("Carta A tem o maior número de pontos turísticos: (%d > %d)\n", numpontosturistcsA, numpontosturistcsB);
-} else if (numpontosturistcsA < numpontosturistcsB) {
-    printf("Carta B tem o maior número de pontos turísticos: (%d > %d)\n", numpontosturistcsB, numpontosturistcsA);
-} else {
-    printf("Os valores dos pontos turísticos são iguais (%d = %d)\n", numpontosturistcsA, numpontosturistcsB);
-}
+    printf("\n--CARTA B--\n");
+    printf("Código: %s\n", CodCartaB);
+    printf("Estado: %c\n", EstadoB);
+    printf("Cidade: %s\n", CidadeB);
+    printf("População: %lu\n", PopulacaoB);
+    printf("Área: %.2f km²\n", AreaB);
+    printf("PIB: %.2f bilhões de reais\n", PIBB);
+    printf("Pontos turísticos: %d\n", NumPontosTuritcsB);
+    printf("Densidade Populacional: %5.2f hab/km²\n", DensidadePopulacionalB);
+    printf("PIB per Capita: %5.2f reais\n", PIBperCapitaB);
 
     return 0;
 }
