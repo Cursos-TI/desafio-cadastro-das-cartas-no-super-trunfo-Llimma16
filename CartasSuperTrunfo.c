@@ -7,7 +7,7 @@ int main() {
     char CidadeA[30];
     char CodCartaA[5];
     unsigned long int PopulacaoA;
-    int NumPontosTuritcsA;
+    int NumPontosTuristicosA;
     float AreaA;
     float PIBA;
     float DensidadePopulacionalA;
@@ -19,7 +19,7 @@ int main() {
     char CidadeB[30];
     char CodCartaB[5];
     unsigned long int PopulacaoB;
-    int NumPontosTuritcsB;
+    int NumPontosTuristicosB;
     float AreaB;
     float PIBB;
     float DensidadePopulacionalB;
@@ -46,7 +46,7 @@ int main() {
     scanf("%f", &PIBA);
 
     printf("Quantos pontos turísticos?\n");
-    scanf("%d", &NumPontosTuritcsA);
+    scanf("%d", &NumPontosTuristicosA);
 
     printf("\n-------CARTA B------\n");
     printf("Qual o código da sua carta?\n");
@@ -68,11 +68,11 @@ int main() {
     scanf("%f", &PIBB);
 
     printf("Quantos pontos turísticos?\n");
-    scanf("%d", &NumPontosTuritcsB);
+    scanf("%d", &NumPontosTuristicosB);
 
     printf("\n===== CALCULOS =====\n");
 
-    // Cálculo da densidade populacional com verificação de divisão por zero
+    // Cálculo seguro da densidade populacional
     if (AreaA != 0)
         DensidadePopulacionalA = (float)PopulacaoA / AreaA;
     else
@@ -83,7 +83,7 @@ int main() {
     else
         DensidadePopulacionalB = 0.0F;
 
-    // Cálculo do PIB per capita com verificação de divisão por zero
+    // Cálculo seguro do PIB per capita
     if (PopulacaoA != 0)
         PIBperCapitaA = (PIBA * 1e9) / PopulacaoA;
     else
@@ -94,12 +94,12 @@ int main() {
     else
         PIBperCapitaB = 0.0F;
 
-    // Cálculo do Super Poder após valores seguros
+    // Cálculo do Super Poder usando valores seguros
     float inversoDensidadeA = (DensidadePopulacionalA != 0) ? (1.0F / DensidadePopulacionalA) : 0.0F;
     float inversoDensidadeB = (DensidadePopulacionalB != 0) ? (1.0F / DensidadePopulacionalB) : 0.0F;
 
-    SuperPoderA = (float)PopulacaoA + AreaA + PIBA + (float)NumPontosTuritcsA + PIBperCapitaA + inversoDensidadeA;
-    SuperPoderB = (float)PopulacaoB + AreaB + PIBB + (float)NumPontosTuritcsB + PIBperCapitaB + inversoDensidadeB;
+    SuperPoderA = (float)PopulacaoA + AreaA + PIBA + (float)NumPontosTuristicosA + PIBperCapitaA + inversoDensidadeA;
+    SuperPoderB = (float)PopulacaoB + AreaB + PIBB + (float)NumPontosTuristicosB + PIBperCapitaB + inversoDensidadeB;
 
     printf("\n===== Resultado =====\n");
 
@@ -110,7 +110,7 @@ int main() {
     printf("População: %lu\n", PopulacaoA);
     printf("Área: %.2f km²\n", AreaA);
     printf("PIB: %.2f bilhões de reais\n", PIBA);
-    printf("Pontos turísticos: %d\n", NumPontosTuritcsA);
+    printf("Pontos turísticos: %d\n", NumPontosTuristicosA);
     printf("Densidade Populacional: %.2f hab/km²\n", DensidadePopulacionalA);
     printf("PIB per Capita: %.2f reais\n", PIBperCapitaA);
     printf("Super Poder: %.2f\n", SuperPoderA);
@@ -122,16 +122,17 @@ int main() {
     printf("População: %lu\n", PopulacaoB);
     printf("Área: %.2f km²\n", AreaB);
     printf("PIB: %.2f bilhões de reais\n", PIBB);
-    printf("Pontos turísticos: %d\n", NumPontosTuritcsB);
+    printf("Pontos turísticos: %d\n", NumPontosTuristicosB);
     printf("Densidade Populacional: %.2f hab/km²\n", DensidadePopulacionalB);
     printf("PIB per Capita: %.2f reais\n", PIBperCapitaB);
     printf("Super Poder: %.2f\n", SuperPoderB);
 
+    // Comparações: 1 se Carta A vence, 0 se Carta B vence ou empate
     printf("\n===== COMPARAÇÕES (1: Carta A vence; 0: Carta B vence/Empate) =====\n");
     printf("População: %d\n", (PopulacaoA > PopulacaoB) ? 1 : 0);
     printf("Área: %d\n", (AreaA > AreaB) ? 1 : 0);
     printf("PIB: %d\n", (PIBA > PIBB) ? 1 : 0);
-    printf("Pontos Turísticos: %d\n", (NumPontosTuritcsA > NumPontosTuritcsB) ? 1 : 0);
+    printf("Pontos Turísticos: %d\n", (NumPontosTuristicosA > NumPontosTuristicosB) ? 1 : 0);
     printf("Densidade Populacional: %d\n", (DensidadePopulacionalA < DensidadePopulacionalB) ? 1 : 0); // menor vence
     printf("PIB per Capita: %d\n", (PIBperCapitaA > PIBperCapitaB) ? 1 : 0);
     printf("Super Poder: %d\n", (SuperPoderA > SuperPoderB) ? 1 : 0);
