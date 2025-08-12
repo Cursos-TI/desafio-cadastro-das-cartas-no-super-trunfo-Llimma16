@@ -12,6 +12,7 @@ int main() {
     float PIBA;
     float DensidadePopulacionalA;
     float PIBperCapitaA;
+    float SuperPoderA;
 
     // CARTA B 
     char EstadoB;
@@ -23,6 +24,7 @@ int main() {
     float PIBB;
     float DensidadePopulacionalB;
     float  PIBperCapitaB;
+    float SuperPoderB;
      
 
     printf("-------CARTA A------\n");
@@ -30,7 +32,7 @@ int main() {
     scanf("%4s", CodCartaA);
 
     printf("Qual o seu estado (entre A e H)?\n");
-    scanf(" %c", &EstadoA);  // espaço antes do %c para ignorar \n
+    scanf(" %c", &EstadoA);
 
     printf("Qual é o nome da sua cidade?\n");
     scanf(" %29[^\n]", CidadeA);
@@ -69,7 +71,7 @@ int main() {
     printf("Quantos pontos turísticos?\n");
     scanf("%d", &NumPontosTuritcsB);
 
-    ("\n===== CALCULOS =====\n");
+    //printf("//n===== CALCULOS =====//\n");
 
     //Dendidade populacional:habitantes por KM² 
 
@@ -81,7 +83,41 @@ int main() {
     PIBperCapitaA = (PIBA* 1e9) / PopulacaoA;
     PIBperCapitaB = (PIBB* 1e9) / PopulacaoB;
 
+    // Cálculo do Super Poder (incluindo inverso da densidade, se diferente de zero)
+    float inversoDensidadeA = (DensidadePopulacionalA != 0) ? (1.0F / DensidadePopulacionalA) : 0.0F;
+    float inversoDensidadeB = (DensidadePopulacionalB != 0) ? (1.0F / DensidadePopulacionalB) : 0.0F;
+
+    SuperPoderA = (float)PopulacaoA + AreaA + PIBA + (float)NumPontosTuritcsA + PIBperCapitaA + inversoDensidadeA;
+    SuperPoderB = (float)PopulacaoB + AreaB + PIBB + (float)NumPontosTuritcsB + PIBperCapitaB + inversoDensidadeB;
+
+    // Evitar divisão por zero na densidade populacional
+
+    if (AreaA != 0)
+        DensidadePopulacionalA = (float)PopulacaoA / AreaA;
+    else
+        DensidadePopulacionalA = 0.0F;   
+        
+    // *** ALTERAÇÃO: evitar divisão por zero
+
+    if (AreaB != 0)
+        DensidadePopulacionalB = (float)PopulacaoB / AreaB;
+    else
+        DensidadePopulacionalB = 0.0F;
+
+    // Evitar divisão por zero no PIB per capita
+    if (PopulacaoA != 0)
+        PIBperCapitaA = (PIBA * 1e9) / PopulacaoA;
+    else
+        PIBperCapitaA = 0.0F;
+
+    if (PopulacaoB != 0)
+        PIBperCapitaB = (PIBB * 1e9) / PopulacaoB;
+    else
+        PIBperCapitaB = 0.0F;
+
     printf("\n===== Resultado =====\n");
+
+       printf("\n===== Resultado =====\n");
 
     printf("\n--CARTA A--\n");
     printf("Código: %s\n", CodCartaA);
@@ -93,6 +129,7 @@ int main() {
     printf("Pontos turísticos: %d\n", NumPontosTuritcsA);
     printf("Densidade Populacional: %5.2f hab/km²\n", DensidadePopulacionalA);
     printf("PIB per Capita: %5.2f reais\n", PIBperCapitaA);
+    printf("Super Poder: %5.2f\n", SuperPoderA);    // *** ALTERAÇÃO: mostrar Super Poder
 
     printf("\n--CARTA B--\n");
     printf("Código: %s\n", CodCartaB);
@@ -104,6 +141,17 @@ int main() {
     printf("Pontos turísticos: %d\n", NumPontosTuritcsB);
     printf("Densidade Populacional: %5.2f hab/km²\n", DensidadePopulacionalB);
     printf("PIB per Capita: %5.2f reais\n", PIBperCapitaB);
+    printf("Super Poder: %5.2f\n", SuperPoderB);    // *** ALTERAÇÃO: mostrar Super Poder
+
+    // *** ALTERAÇÃO: comparações 1 ou 0 entre os atributos (1 se Carta A vence, 0 se B vence ou empate)
+    printf("\n===== COMPARAÇÕES (1: Carta A vence; 0: Carta B vence/Empate) =====\n");
+    printf("População: %d\n", (PopulacaoA > PopulacaoB) ? 1 : 0);
+    printf("Área: %d\n", (AreaA > AreaB) ? 1 : 0);
+    printf("PIB: %d\n", (PIBA > PIBB) ? 1 : 0);
+    printf("Pontos Turísticos: %d\n", (NumPontosTuritcsA > NumPontosTuritcsB) ? 1 : 0);
+    printf("Densidade Populacional: %d\n", (DensidadePopulacionalA < DensidadePopulacionalB) ? 1 : 0); // menor vence
+    printf("PIB per Capita: %d\n", (PIBperCapitaA > PIBperCapitaB) ? 1 : 0);
+    printf("Super Poder: %d\n", (SuperPoderA > SuperPoderB) ? 1 : 0);
 
     return 0;
 }
