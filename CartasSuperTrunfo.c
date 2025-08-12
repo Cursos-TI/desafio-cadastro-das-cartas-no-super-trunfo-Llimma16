@@ -7,7 +7,7 @@ int main() {
     char CidadeA[30];
     char CodCartaA[5];
     unsigned long int PopulacaoA;
-    int NumPontosTuristicosA;  // Corrigido nome da variável
+    int NumPontosTuristicosA;
     float AreaA;
     float PIBA;
     float DensidadePopulacionalA;
@@ -19,7 +19,7 @@ int main() {
     char CidadeB[30];
     char CodCartaB[5];
     unsigned long int PopulacaoB;
-    int NumPontosTuristicosB;  // Corrigido nome da variável
+    int NumPontosTuristicosB;
     float AreaB;
     float PIBB;
     float DensidadePopulacionalB;
@@ -76,26 +76,26 @@ int main() {
     if (AreaA != 0) {
         DensidadePopulacionalA = (float)PopulacaoA / AreaA;
     } else {
-        DensidadePopulacionalA = 0.0F; // Evita divisão por zero
+        DensidadePopulacionalA = 0.0F;
     }
 
     if (AreaB != 0) {
         DensidadePopulacionalB = (float)PopulacaoB / AreaB;
     } else {
-        DensidadePopulacionalB = 0.0F; // Evita divisão por zero
+        DensidadePopulacionalB = 0.0F;
     }
 
     // Cálculo seguro do PIB per capita
     if (PopulacaoA != 0) {
         PIBperCapitaA = (PIBA * 1e9) / PopulacaoA;
     } else {
-        PIBperCapitaA = 0.0F; // Evita divisão por zero
+        PIBperCapitaA = 0.0F;
     }
 
     if (PopulacaoB != 0) {
         PIBperCapitaB = (PIBB * 1e9) / PopulacaoB;
     } else {
-        PIBperCapitaB = 0.0F; // Evita divisão por zero
+        PIBperCapitaB = 0.0F;
     }
 
     // Cálculo do Super Poder usando os valores seguros e validados acima
